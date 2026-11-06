@@ -1,4 +1,4 @@
-package com.karandashov.labs;
+package com.Vladislav.labs;
 
 import java.time.OffsetDateTime;
 

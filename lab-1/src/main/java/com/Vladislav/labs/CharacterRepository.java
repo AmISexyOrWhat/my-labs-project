@@ -1,4 +1,4 @@
-package com.karandashov.labs;
+package com.Vladislav.labs;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -19,8 +19,7 @@ public class CharacterRepository {
         Path path = Paths.get(filePath);
 
         if (!Files.exists(path)) {
-            System.err.println("Файл не найден по пути: " + path.toAbsolutePath());
-            return characters;
+            throw new RuntimeException("Файл не найден по пути: " + path.toAbsolutePath());
         }
 
         try (BufferedReader br = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
@@ -43,6 +42,8 @@ public class CharacterRepository {
             }
         } catch (Exception e) {
             System.err.println("Ошибка при чтении файла: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Не удалось прочитать файл", e);
         }
         return characters;
     }
@@ -55,6 +56,8 @@ public class CharacterRepository {
             }
         } catch (IOException e) {
             System.err.println("Ошибка при записи файла: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Не удалось записать результат в файл", e);
         }
     }
 
@@ -69,7 +72,6 @@ public class CharacterRepository {
         all.add(newCharacter);
         writeAllToFile(all);
     }
-
 
     public void update(Long id, String newName) {
         List<Character> all = findAll();
@@ -97,6 +99,8 @@ public class CharacterRepository {
             }
         } catch (IOException e) {
             System.err.println("Ошибка при перезаписи файла: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Не удалось перезаписать файл", e);
         }
     }
 }

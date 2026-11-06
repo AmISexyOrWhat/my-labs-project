@@ -35,7 +35,7 @@
                     <archive>
                         <manifest>
                             <!-- ВНИМАНИЕ!!! Тут должен быть твой пакет/Main, это просто пример!!! -->
-                            <mainClass>com.karandashov.labs.Main</mainClass>
+                            <mainClass>com.Vladislav.labs.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
