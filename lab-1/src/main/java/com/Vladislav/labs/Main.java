@@ -13,7 +13,7 @@ public class Main {
 
         CharacterRepository repository = new CharacterRepository(inputFile);
 
-        System.out.println("--- ОСНОВНОЕ ЗАДАНИЕ ---");
+        System.out.println("ОСНОВНОЕ ЗАДАНИЕ");
 
         List<Character> allCharacters = repository.findAll();
         System.out.println("Успешно загружено персонажей: " + allCharacters.size());
@@ -27,11 +27,11 @@ public class Main {
                 Comparator.comparing(Character::getCreated).reversed()
         );
 
-        pq.addAll(allCharacters); // Закидываем всех в очередь
+        pq.addAll(allCharacters);
 
         List<Character> top5 = new ArrayList<>();
         for (int i = 0; i < 5 && !pq.isEmpty(); i++) {
-            top5.add(pq.poll()); // Достаем 5 самых новых
+            top5.add(pq.poll());
         }
 
         System.out.println("\nТоп-5 самых новых персонажей:");
@@ -61,6 +61,5 @@ public class Main {
             System.out.println(afterCrud.get(i));
         }
         System.out.println("Всего персонажей в файле после CRUD: " + afterCrud.size());
-        System.out.println("\nПроверь файл characters.csv! Остальные колонки (species, status и т.д.) были очищены, так как наша модель хранит только 3 поля.");
     }
 }
